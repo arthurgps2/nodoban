@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://802s5kvqr3ka"]
+
+[ext_resource type="Script" path="res://CharterUI.gd" id="1_p1e3f"]
+
+[node name="Charter" type="Node"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_p1e3f")
+
+[node name="EmptyRMBClickContextMenu" type="PopupMenu" parent="UI"]
+size = Vector2i(151, 100)
+item_count = 1
+item_0/text = "Create new node"
