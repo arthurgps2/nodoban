@@ -44,10 +44,14 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("right_click"):
 		var node_under = get_node_under_mouse()
 		if node_under:
+			empty_cmenu.visible = false
+			
 			node_cmenu.position = get_global_mouse_position()
 			node_cmenu.visible = true
 			node_in_context = node_under
 		else: # Clicked on the void
+			node_cmenu.visible = false
+			
 			empty_cmenu.position = get_global_mouse_position()
 			empty_cmenu.visible = true
 	
