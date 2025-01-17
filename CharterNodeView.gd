@@ -1,11 +1,14 @@
 extends Control
 
 const zoom_factor := .05
+const charter_node_scene : PackedScene = preload("res://CharterNode.tscn")
 
 var node_dragging : CharterNode = null
 var node_drag_offset : Vector2
 var view_dragging := false
 var view_drag_offset : Vector2
+
+@onready var empty_menu = $EmptyRMBClickContextMenu
 
 func _process(delta: float) -> void:
 	# Node management
@@ -16,14 +19,21 @@ func _process(delta: float) -> void:
 		if node_under:
 			node_dragging = node_under
 			node_drag_offset = mouse_pos - node_dragging.global_position
-		
-		if not node_dragging:
+		else:
 			view_dragging = true
 			view_drag_offset = mouse_pos - position
 	
 	if Input.is_action_just_released("left_click"):
 		node_dragging = null
 		view_dragging = false
+	
+	if Input.is_action_just_pressed("right_click"):
+		var node_under = get_node_under_mouse()
+		if node_under: # There will be some code here, I'm sure of it
+			pass
+		else: # Clicked on the void
+			empty_menu.position = get_global_mouse_position()
+			empty_menu.visible = true
 	
 	# Dragging nodes
 	if node_dragging:
@@ -40,6 +50,13 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("scroll_down"):
 		var sub = zoom_factor * scale
 		scale -= sub
+
+func _on_empty_menu_index_pressed(index: int) -> void:
+	match index:
+		0:
+			var charter_node := charter_node_scene.instantiate()
+			charter_node.global_position = get_global_mouse_position()
+			add_child(charter_node)
 
 func get_node_under_mouse() -> CharterNode:
 	for child in get_children():
