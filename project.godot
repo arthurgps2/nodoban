@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="dantoma-level-charter"
-run/main_scene="res://Charter.tscn"
+run/main_scene="res://Charter/Charter.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -1,7 +1,7 @@
 extends Control
 
 const zoom_factor := .05
-const charter_node_scene : PackedScene = preload("res://CharterNode.tscn")
+const charter_node_scene : PackedScene = preload("res://Node/CharterNode.tscn")
 
 var node_dragging : CharterNode
 var node_drag_offset : Vector2
@@ -13,7 +13,6 @@ var node_in_context : CharterNode
 @onready var node_cmenu = $NodeRMBClickContextMenu
 
 func _process(delta: float) -> void:
-	print(node_dragging)
 	# Node management
 	var mouse_pos := get_global_mouse_position()
 	
