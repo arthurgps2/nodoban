@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://802s5kvqr3ka"]
+[gd_scene load_steps=3 format=3 uid="uid://802s5kvqr3ka"]
 
 [ext_resource type="Script" path="res://CharterUI.gd" id="1_p1e3f"]
+[ext_resource type="Script" path="res://CharterNodeView.gd" id="2_y5cb6"]
 
 [node name="Charter" type="Node"]
 
@@ -21,5 +22,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_y5cb6")
 
 [connection signal="index_pressed" from="UI/EmptyRMBClickContextMenu" to="UI" method="_on_empty_menu_index_pressed"]
