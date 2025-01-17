@@ -12,11 +12,10 @@ func _process(delta: float) -> void:
 	var mouse_pos := get_global_mouse_position()
 	
 	if Input.is_action_just_pressed("left_click"):
-		for child in get_children():
-			if child is CharterNode and child.get_global_rect().has_point(mouse_pos):
-				node_dragging = child
-				node_drag_offset = mouse_pos - node_dragging.global_position
-				break
+		var node_under := get_node_under_mouse()
+		if node_under:
+			node_dragging = node_under
+			node_drag_offset = mouse_pos - node_dragging.global_position
 		
 		if not node_dragging:
 			view_dragging = true
@@ -41,3 +40,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("scroll_down"):
 		var sub = zoom_factor * scale
 		scale -= sub
+
+func get_node_under_mouse() -> CharterNode:
+	for child in get_children():
+		if child is CharterNode and child.get_global_rect().has_point(get_global_mouse_position()):
+			return child
+	
+	return null
