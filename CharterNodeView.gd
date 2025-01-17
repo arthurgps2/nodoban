@@ -9,6 +9,7 @@ var view_dragging := false
 var view_drag_offset : Vector2
 
 @onready var empty_menu = $EmptyRMBClickContextMenu
+@onready var node_menu = $NodeRMBClickContextMenu
 
 func _process(delta: float) -> void:
 	# Node management
@@ -29,8 +30,9 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("right_click"):
 		var node_under = get_node_under_mouse()
-		if node_under: # There will be some code here, I'm sure of it
-			pass
+		if node_under:
+			node_menu.position = get_global_mouse_position()
+			node_menu.visible = true
 		else: # Clicked on the void
 			empty_menu.position = get_global_mouse_position()
 			empty_menu.visible = true

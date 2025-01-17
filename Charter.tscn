@@ -24,4 +24,11 @@ size = Vector2i(151, 100)
 item_count = 1
 item_0/text = "Create new node"
 
+[node name="NodeRMBClickContextMenu" type="PopupMenu" parent="NodeView"]
+size = Vector2i(141, 100)
+item_count = 2
+item_0/text = "Create new link"
+item_1/text = "Delete node"
+item_1/id = 1
+
 [connection signal="index_pressed" from="NodeView/EmptyRMBClickContextMenu" to="NodeView" method="_on_empty_menu_index_pressed"]
