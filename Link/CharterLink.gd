@@ -8,6 +8,9 @@ const arrow_size = 10
 var start_point := Vector2()
 var end_point := Vector2()
 
+var start_node : CharterNode
+var end_node : CharterNode
+
 func _draw():
 	# Main line
 	draw_line(start_point, end_point, line_color, line_width)
@@ -22,4 +25,8 @@ func _draw():
 	draw_polygon([end_point, base1, base2], [line_color])
 
 func _process(_delta):
+	if start_node and end_node:
+		start_point = start_node.position
+		end_point = end_node.position
+	
 	queue_redraw()

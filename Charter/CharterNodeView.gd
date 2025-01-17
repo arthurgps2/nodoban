@@ -2,12 +2,14 @@ extends Control
 
 const zoom_factor := .05
 const charter_node_scene : PackedScene = preload("res://Node/CharterNode.tscn")
+const charter_link_scene : PackedScene = preload("res://Link/CharterLink.tscn")
 
 var node_dragging : CharterNode
 var node_drag_offset : Vector2
 var view_dragging := false
 var view_drag_offset : Vector2
 var node_in_context : CharterNode
+var link_being_made : CharterLink
 
 @onready var empty_cmenu = $EmptyRMBClickContextMenu
 @onready var node_cmenu = $NodeRMBClickContextMenu
@@ -18,12 +20,22 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("left_click"):
 		var node_under := get_node_under_mouse()
-		if node_under:
-			node_dragging = node_under
-			node_drag_offset = mouse_pos - node_dragging.global_position
+		
+		if link_being_made:
+			if node_under:
+				link_being_made.end_node = node_under
+				link_being_made.end_point = node_under.position
+			else:
+				link_being_made.queue_free()
+				
+			link_being_made = null
 		else:
-			view_dragging = true
-			view_drag_offset = mouse_pos - position
+			if node_under:
+				node_dragging = node_under
+				node_drag_offset = mouse_pos - node_dragging.global_position
+			else:
+				view_dragging = true
+				view_drag_offset = mouse_pos - position
 	
 	if Input.is_action_just_released("left_click"):
 		node_dragging = null
@@ -54,6 +66,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("scroll_down"):
 		var sub = zoom_factor * scale
 		scale -= sub
+	
+	# Update link being made
+	if link_being_made:
+		link_being_made.start_point = link_being_made.start_node.position
+		link_being_made.end_point = get_local_mouse_position()
 
 func _on_empty_menu_index_pressed(index: int) -> void:
 	match index:
@@ -65,9 +82,13 @@ func _on_empty_menu_index_pressed(index: int) -> void:
 func _on_node_menu_index_pressed(index: int) -> void:
 	match index:
 		0: # Create new link
-			pass
+			link_being_made = charter_link_scene.instantiate()
+			link_being_made.start_node = node_in_context
+			add_child(link_being_made)
 		1: # Delete node
 			node_in_context.delete()
+	
+	node_in_context = null
 
 func get_node_under_mouse() -> CharterNode:
 	for child in get_children():
