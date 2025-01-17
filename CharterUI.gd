@@ -20,4 +20,4 @@ func _on_empty_menu_index_pressed(index: int) -> void:
 		0:
 			var node := node_scene.instantiate()
 			node.position = get_local_mouse_position()
-			get_node("..").add_child(node)
+			get_node("../NodeView").add_child(node)
