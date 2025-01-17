@@ -32,3 +32,4 @@ item_1/text = "Delete node"
 item_1/id = 1
 
 [connection signal="index_pressed" from="NodeView/EmptyRMBClickContextMenu" to="NodeView" method="_on_empty_menu_index_pressed"]
+[connection signal="index_pressed" from="NodeView/NodeRMBClickContextMenu" to="NodeView" method="_on_node_menu_index_pressed"]
