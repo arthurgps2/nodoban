@@ -26,7 +26,7 @@ func _draw():
 
 func _process(_delta):
 	if start_node and end_node:
-		start_point = start_node.position
-		end_point = end_node.position
+		start_point = start_node.get_center()
+		end_point = end_node.get_center()
 	
 	queue_redraw()

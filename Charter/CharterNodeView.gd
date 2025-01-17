@@ -73,14 +73,14 @@ func _process(delta: float) -> void:
 	
 	# Update link being made
 	if link_being_made:
-		link_being_made.start_point = link_being_made.start_node.position
+		link_being_made.start_point = link_being_made.start_node.get_center()
 		link_being_made.end_point = get_local_mouse_position()
 
 func _on_empty_menu_index_pressed(index: int) -> void:
 	match index:
-		0:
+		0: # Create new node
 			var charter_node := charter_node_scene.instantiate()
-			charter_node.global_position = get_global_mouse_position()
+			charter_node.global_position = get_global_mouse_position() - charter_node.size/2
 			add_child(charter_node)
 
 func _on_node_menu_index_pressed(index: int) -> void:
