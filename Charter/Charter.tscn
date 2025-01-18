@@ -58,6 +58,10 @@ size_flags_vertical = 3
 text = "/path/to/file.json"
 fit_content = true
 
+[node name="FileDialog" type="FileDialog" parent="UI"]
+initial_position = 2
+size = Vector2i(720, 540)
+
 [node name="NodeView" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
