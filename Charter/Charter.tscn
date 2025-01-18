@@ -31,11 +31,11 @@ grow_horizontal = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/PanelContainer"]
 layout_mode = 2
 
-[node name="Button" type="MenuButton" parent="UI/PanelContainer/HBoxContainer"]
+[node name="OptionsMenuButton" type="MenuButton" parent="UI/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = ExtResource("2_s307i")
-vertical_icon_alignment = 0
 expand_icon = true
 item_count = 3
 popup/item_0/text = "Save file"
@@ -61,6 +61,8 @@ fit_content = true
 [node name="FileDialog" type="FileDialog" parent="UI"]
 initial_position = 2
 size = Vector2i(720, 540)
+access = 2
+filters = PackedStringArray("*.json")
 
 [node name="NodeView" type="Control" parent="."]
 layout_mode = 3
