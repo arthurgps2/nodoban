@@ -19,10 +19,11 @@ func _draw():
 	var direction = (end_point - start_point).normalized()
 	var perp = Vector2(-direction.y, direction.x)
 	
-	var base1 = end_point - (direction - perp) * arrow_size
-	var base2 = end_point - (direction + perp) * arrow_size
+	var tip = lerp(start_point, end_point, .5)
+	var base1 = tip - (direction - perp) * arrow_size
+	var base2 = tip - (direction + perp) * arrow_size
 	
-	draw_polygon([end_point, base1, base2], [line_color])
+	draw_polygon([tip, base1, base2], [line_color])
 
 func _process(_delta):
 	if start_node and end_node:
