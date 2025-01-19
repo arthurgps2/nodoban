@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Charter/CharterUI.gd" id="1_7qrr2"]
 [ext_resource type="Script" path="res://Charter/CharterNodeView.gd" id="2_5jmha"]
 [ext_resource type="Texture2D" uid="uid://bgdvc6m8oju7c" path="res://icon.svg" id="2_s307i"]
-[ext_resource type="PackedScene" uid="uid://c1tepacjfl6vu" path="res://Charter/CharterNodeTypeMenu.tscn" id="3_12wx7"]
+[ext_resource type="PackedScene" uid="uid://c1tepacjfl6vu" path="res://Charter/Node Type Menu/CharterNodeTypeMenu.tscn" id="3_12wx7"]
 
 [node name="Charter" type="Control"]
 layout_mode = 3
