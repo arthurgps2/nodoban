@@ -11,14 +11,15 @@ var view_drag_offset : Vector2
 var node_in_context : CharterNode
 var link_being_made : CharterLink
 
-@onready var empty_cmenu = $EmptyRMBClickContextMenu
-@onready var node_cmenu = $NodeRMBClickContextMenu
+@onready var empty_cmenu : PopupMenu = $EmptyRMBClickContextMenu
+@onready var node_cmenu : PopupMenu = $NodeRMBClickContextMenu
+@onready var node_types_window : Window = get_node("../UI/NodeTypes")
 
 func _process(delta: float) -> void:
 	# Node management
 	var mouse_pos := get_global_mouse_position()
 	
-	if Input.is_action_just_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click") and not node_types_window.has_focus():
 		var node_under := get_node_under_mouse()
 		
 		if link_being_made:
@@ -41,7 +42,7 @@ func _process(delta: float) -> void:
 		node_dragging = null
 		view_dragging = false
 	
-	if Input.is_action_just_pressed("right_click"):
+	if Input.is_action_just_pressed("right_click") and not node_types_window.has_focus():
 		var node_under = get_node_under_mouse()
 		if node_under:
 			empty_cmenu.hide()
