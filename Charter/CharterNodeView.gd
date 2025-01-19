@@ -64,11 +64,11 @@ func _process(delta: float) -> void:
 		position = mouse_pos - view_drag_offset
 	
 	# Zoom in/out
-	if Input.is_action_just_pressed("scroll_up"):
+	if Input.is_action_just_pressed("scroll_up") and not node_types_window.has_focus():
 		var add := zoom_factor * scale
 		scale += add
 	
-	if Input.is_action_just_pressed("scroll_down"):
+	if Input.is_action_just_pressed("scroll_down") and not node_types_window.has_focus():
 		var sub = zoom_factor * scale
 		scale -= sub
 	
