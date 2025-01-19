@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://802s5kvqr3ka"]
+[gd_scene load_steps=5 format=3 uid="uid://802s5kvqr3ka"]
 
 [ext_resource type="Script" path="res://Charter/CharterUI.gd" id="1_7qrr2"]
 [ext_resource type="Script" path="res://Charter/CharterNodeView.gd" id="2_5jmha"]
 [ext_resource type="Texture2D" uid="uid://bgdvc6m8oju7c" path="res://icon.svg" id="2_s307i"]
+[ext_resource type="PackedScene" uid="uid://c1tepacjfl6vu" path="res://Charter/CharterNodeTypeMenu.tscn" id="3_12wx7"]
 
 [node name="Charter" type="Control"]
 layout_mode = 3
@@ -67,9 +68,10 @@ filters = PackedStringArray("*.json")
 [node name="NodeTypes" type="Window" parent="UI"]
 title = "Node types"
 position = Vector2i(64, 64)
-size = Vector2i(200, 100)
-visible = false
-min_size = Vector2i(200, 0)
+size = Vector2i(300, 200)
+min_size = Vector2i(300, 200)
+
+[node name="CharterNodeTypeMenu" parent="UI/NodeTypes" instance=ExtResource("3_12wx7")]
 
 [node name="NodeView" type="Control" parent="."]
 layout_mode = 3
