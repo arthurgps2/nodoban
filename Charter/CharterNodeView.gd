@@ -81,7 +81,8 @@ func _on_empty_menu_index_pressed(index: int) -> void:
 	match index:
 		0: # Create new node
 			var charter_node := charter_node_scene.instantiate()
-			charter_node.global_position = get_global_mouse_position() - charter_node.size/2
+			charter_node.global_position = ((get_global_mouse_position() - position) / scale
+				- charter_node.size/2)
 			add_child(charter_node)
 
 func _on_node_menu_index_pressed(index: int) -> void:
