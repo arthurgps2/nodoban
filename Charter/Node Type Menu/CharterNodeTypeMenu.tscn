@@ -17,7 +17,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="MenuHeader/HBoxContainer"]
+[node name="DropdownButton" type="Button" parent="MenuHeader/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 icon = ExtResource("1_olsri")
@@ -76,3 +76,5 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 3
 text = "asdasdasd"
+
+[connection signal="pressed" from="MenuHeader/HBoxContainer/DropdownButton" to="." method="_on_dropdown_button_pressed"]
