@@ -71,7 +71,28 @@ position = Vector2i(64, 64)
 size = Vector2i(300, 200)
 min_size = Vector2i(300, 200)
 
-[node name="CharterNodeTypeMenu" parent="UI/NodeTypes" instance=ExtResource("3_12wx7")]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/NodeTypes"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/NodeTypes/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharterNodeTypeMenu" parent="UI/NodeTypes/ScrollContainer/VBoxContainer" instance=ExtResource("3_12wx7")]
+layout_mode = 2
+
+[node name="CharterNodeTypeMenu2" parent="UI/NodeTypes/ScrollContainer/VBoxContainer" instance=ExtResource("3_12wx7")]
+layout_mode = 2
+
+[node name="CharterNodeTypeMenu3" parent="UI/NodeTypes/ScrollContainer/VBoxContainer" instance=ExtResource("3_12wx7")]
+layout_mode = 2
+
+[node name="CharterNodeTypeMenu4" parent="UI/NodeTypes/ScrollContainer/VBoxContainer" instance=ExtResource("3_12wx7")]
+layout_mode = 2
 
 [node name="NodeView" type="Control" parent="."]
 layout_mode = 3

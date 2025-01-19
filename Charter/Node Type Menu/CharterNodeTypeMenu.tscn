@@ -3,61 +3,65 @@
 [ext_resource type="Texture2D" uid="uid://bgdvc6m8oju7c" path="res://icon.svg" id="1_olsri"]
 [ext_resource type="Script" path="res://Charter/Node Type Menu/CharterNodeTypeMenu.gd" id="1_xrobp"]
 
-[node name="CharterNodeTypeMenu" type="VBoxContainer"]
+[node name="CharterNodeTypeMenu" type="PanelContainer"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 32.0
 grow_horizontal = 2
 script = ExtResource("1_xrobp")
 
-[node name="MenuHeader" type="PanelContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuHeader"]
+[node name="MenuHeader" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MenuHeader"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DropdownButton" type="Button" parent="MenuHeader/HBoxContainer"]
+[node name="DropdownButton" type="Button" parent="VBoxContainer/MenuHeader/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 icon = ExtResource("1_olsri")
 expand_icon = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuHeader/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MenuHeader/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="RichTextLabel" type="LineEdit" parent="MenuHeader/HBoxContainer/VBoxContainer"]
+[node name="RichTextLabel" type="LineEdit" parent="VBoxContainer/MenuHeader/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "node"
 
-[node name="MenuBody" type="PanelContainer" parent="."]
+[node name="MenuBody" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PropertyStandard" type="PanelContainer" parent="MenuBody"]
+[node name="PropertyStandard" type="PanelContainer" parent="VBoxContainer/MenuBody"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuBody/PropertyStandard"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MenuBody/PropertyStandard"]
 layout_mode = 2
 
-[node name="PropertyNameContainer" type="VBoxContainer" parent="MenuBody/PropertyStandard/HBoxContainer"]
+[node name="PropertyNameContainer" type="VBoxContainer" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="TextEdit" type="LineEdit" parent="MenuBody/PropertyStandard/HBoxContainer/PropertyNameContainer"]
+[node name="TextEdit" type="LineEdit" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyNameContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "asdasdsad"
 
-[node name="PropertyValueContainer" type="HBoxContainer" parent="MenuBody/PropertyStandard/HBoxContainer"]
+[node name="PropertyValueContainer" type="HBoxContainer" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="OptionButton" type="OptionButton" parent="MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer"]
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer"]
 layout_mode = 2
 selected = 0
 item_count = 3
@@ -67,14 +71,14 @@ popup/item_1/id = 1
 popup/item_2/text = "Boolean"
 popup/item_2/id = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="TextEdit2" type="LineEdit" parent="MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer/VBoxContainer"]
+[node name="TextEdit2" type="LineEdit" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "asdasdasd"
 
-[connection signal="pressed" from="MenuHeader/HBoxContainer/DropdownButton" to="." method="_on_dropdown_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuHeader/HBoxContainer/DropdownButton" to="." method="_on_dropdown_button_pressed"]
