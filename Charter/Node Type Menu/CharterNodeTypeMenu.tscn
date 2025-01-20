@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1tepacjfl6vu"]
+[gd_scene load_steps=3 format=3 uid="uid://c1tepacjfl6vu"]
 
 [ext_resource type="Texture2D" uid="uid://bgdvc6m8oju7c" path="res://icon.svg" id="1_olsri"]
 [ext_resource type="Script" path="res://Charter/Node Type Menu/CharterNodeTypeMenu.gd" id="1_xrobp"]
-[ext_resource type="PackedScene" uid="uid://dmrygu0hmivbp" path="res://Charter/Node Type Menu/Node Property/CharterNodeProperty.tscn" id="3_y7flg"]
 
 [node name="CharterNodeTypeMenu" type="PanelContainer"]
 anchors_preset = 10
@@ -43,7 +42,9 @@ layout_mode = 2
 [node name="Items" type="VBoxContainer" parent="VBoxContainer/MenuBody"]
 layout_mode = 2
 
-[node name="CharterNodeProperty" parent="VBoxContainer/MenuBody/Items" instance=ExtResource("3_y7flg")]
+[node name="NewButton" type="Button" parent="VBoxContainer/MenuBody/Items"]
 layout_mode = 2
+text = "New property"
 
 [connection signal="pressed" from="VBoxContainer/MenuHeader/HBoxContainer/DropdownButton" to="." method="_on_dropdown_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MenuBody/Items/NewButton" to="." method="_on_new_button_pressed"]
