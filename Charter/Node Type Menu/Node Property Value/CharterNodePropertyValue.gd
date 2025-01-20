@@ -8,6 +8,8 @@ enum ITEM_ID {
 	ARRAY = 3,
 }
 
+const node_property_value_scene : PackedScene = preload("res://Charter/Node Type Menu/Node Property Value/CharterNodePropertyValue.tscn")
+
 func get_value() -> Variant:
 	match %ValueType.selected:
 		ITEM_ID.STRING:
@@ -43,3 +45,9 @@ func _on_value_type_item_selected(index: int) -> void:
 			%BoolEdit.visible = true
 		ITEM_ID.ARRAY:
 			%ArrayEdit.visible = true
+
+func _on_new_array_item_button_pressed() -> void:
+	var node_property_value := node_property_value_scene.instantiate()
+	%ArrayEdit.add_child(node_property_value)
+	%ArrayEdit.move_child(node_property_value, -1)
+	%ArrayEdit.move_child(%ArrayEdit/NewArrayItemButton, -1)

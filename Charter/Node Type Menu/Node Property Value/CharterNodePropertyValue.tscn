@@ -52,8 +52,9 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="NewButton" type="Button" parent="VBoxContainer/ArrayEdit"]
+[node name="NewArrayItemButton" type="Button" parent="VBoxContainer/ArrayEdit"]
 layout_mode = 2
 text = "New item"
 
 [connection signal="item_selected" from="ValueType" to="." method="_on_value_type_item_selected"]
+[connection signal="pressed" from="VBoxContainer/ArrayEdit/NewArrayItemButton" to="." method="_on_new_array_item_button_pressed"]

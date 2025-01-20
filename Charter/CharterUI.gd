@@ -1,6 +1,6 @@
 extends Control
 
-const node_type_menu_scene = preload("res://Charter/Node Type Menu/CharterNodeTypeMenu.tscn")
+const node_type_menu_scene : PackedScene = preload("res://Charter/Node Type Menu/CharterNodeTypeMenu.tscn")
 
 func _ready() -> void:
 	%OptionsMenuButton.get_popup().index_pressed.connect(_on_options_menu_index_pressed)
