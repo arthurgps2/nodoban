@@ -48,6 +48,10 @@ func _on_value_type_item_selected(index: int) -> void:
 
 func _on_new_array_item_button_pressed() -> void:
 	var node_property_value := node_property_value_scene.instantiate()
+	node_property_value.get_node("%DeleteButton").pressed.connect(node_property_value._on_delete_button_pressed)
 	%ArrayEdit.add_child(node_property_value)
 	%ArrayEdit.move_child(node_property_value, -1)
 	%ArrayEdit.move_child(%ArrayEdit/NewArrayItemButton, -1)
+
+func _on_delete_button_pressed() -> void:
+	queue_free()
