@@ -3,6 +3,18 @@ extends PanelContainer
 
 const node_property_scene : PackedScene = preload("res://Charter/Node Type Menu/Node Property/CharterNodeProperty.tscn")
 
+func get_node_type_name() -> String:
+	return %NodeTypeNameEdit.text
+
+func get_node_type_properties() -> Dictionary:
+	var properties := {}
+	
+	for child in %MenuBody/Items.get_children():
+		if child is not CharterNodeProperty: continue
+		properties[child.get_property_name()] = child.get_property_value()
+	
+	return properties
+
 func _on_dropdown_button_pressed() -> void:
 	%MenuBody.visible = not %MenuBody.visible
 
