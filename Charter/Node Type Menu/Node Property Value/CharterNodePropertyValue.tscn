@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://bsf00q17e4aoy"]
 
 [node name="CharterNodePropertyValue" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
@@ -22,16 +26,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 
 [node name="StringEdit" type="LineEdit" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "0"
+placeholder_text = "Text"
 
 [node name="NumberEdit" type="LineEdit" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Text"
+placeholder_text = "0"
 
 [node name="BoolEdit" type="CheckBox" parent="VBoxContainer"]
 visible = false
@@ -44,4 +47,3 @@ layout_mode = 2
 [node name="NewButton" type="Button" parent="VBoxContainer/ArrayEdit"]
 layout_mode = 2
 text = "New item"
-alignment = 0
