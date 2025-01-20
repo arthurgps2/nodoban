@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://802s5kvqr3ka"]
+[gd_scene load_steps=4 format=3 uid="uid://802s5kvqr3ka"]
 
 [ext_resource type="Script" path="res://Charter/CharterUI.gd" id="1_7qrr2"]
 [ext_resource type="Script" path="res://Charter/CharterNodeView.gd" id="2_5jmha"]
 [ext_resource type="Texture2D" uid="uid://bgdvc6m8oju7c" path="res://icon.svg" id="2_s307i"]
-[ext_resource type="PackedScene" uid="uid://c1tepacjfl6vu" path="res://Charter/Node Type Menu/CharterNodeTypeMenu.tscn" id="3_12wx7"]
 
 [node name="Charter" type="Control"]
 layout_mode = 3
@@ -78,21 +77,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/NodeTypes/ScrollContainer"]
+[node name="NodeTypeContainer" type="VBoxContainer" parent="UI/NodeTypes/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CharterNodeTypeMenu" parent="UI/NodeTypes/ScrollContainer/VBoxContainer" instance=ExtResource("3_12wx7")]
+[node name="NewNodeButton" type="Button" parent="UI/NodeTypes/ScrollContainer/NodeTypeContainer"]
 layout_mode = 2
-
-[node name="CharterNodeTypeMenu2" parent="UI/NodeTypes/ScrollContainer/VBoxContainer" instance=ExtResource("3_12wx7")]
-layout_mode = 2
-
-[node name="CharterNodeTypeMenu3" parent="UI/NodeTypes/ScrollContainer/VBoxContainer" instance=ExtResource("3_12wx7")]
-layout_mode = 2
-
-[node name="CharterNodeTypeMenu4" parent="UI/NodeTypes/ScrollContainer/VBoxContainer" instance=ExtResource("3_12wx7")]
-layout_mode = 2
+text = "New node type"
 
 [node name="NodeView" type="Control" parent="."]
 layout_mode = 3
@@ -114,5 +106,6 @@ item_1/text = "Delete node"
 item_1/id = 1
 
 [connection signal="close_requested" from="UI/NodeTypes" to="UI" method="_on_node_types_close_requested"]
+[connection signal="pressed" from="UI/NodeTypes/ScrollContainer/NodeTypeContainer/NewNodeButton" to="UI" method="_on_new_node_button_pressed"]
 [connection signal="index_pressed" from="NodeView/EmptyRMBClickContextMenu" to="NodeView" method="_on_empty_menu_index_pressed"]
 [connection signal="index_pressed" from="NodeView/NodeRMBClickContextMenu" to="NodeView" method="_on_node_menu_index_pressed"]
