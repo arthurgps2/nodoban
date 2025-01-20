@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmrygu0hmivbp"]
+[gd_scene load_steps=3 format=3 uid="uid://dmrygu0hmivbp"]
 
 [ext_resource type="PackedScene" uid="uid://bsf00q17e4aoy" path="res://Charter/Node Type Menu/Node Property Value/CharterNodePropertyValue.tscn" id="1_fsvlv"]
+[ext_resource type="Script" path="res://Charter/Node Type Menu/Node Property/CharterNodeProperty.gd" id="1_gavam"]
 
 [node name="CharterNodeProperty" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 48)
@@ -8,6 +9,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 31.0
 grow_horizontal = 2
+script = ExtResource("1_gavam")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -17,10 +19,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="TextEdit" type="LineEdit" parent="HBoxContainer/PropertyNameContainer"]
+[node name="PropertyName" type="LineEdit" parent="HBoxContainer/PropertyNameContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "property_name"
 
-[node name="CharterNodePropertyValue" parent="HBoxContainer" instance=ExtResource("1_fsvlv")]
+[node name="PropertyValue" parent="HBoxContainer" instance=ExtResource("1_fsvlv")]
+unique_name_in_owner = true
 layout_mode = 2
