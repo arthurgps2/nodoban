@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmrygu0hmivbp"]
+
+[ext_resource type="PackedScene" uid="uid://bsf00q17e4aoy" path="res://Charter/Node Type Menu/Node Property Value/CharterNodePropertyValue.tscn" id="1_fsvlv"]
+
+[node name="CharterNodeProperty" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 48)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PropertyNameContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="TextEdit" type="LineEdit" parent="HBoxContainer/PropertyNameContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "property_name"
+
+[node name="CharterNodePropertyValue" parent="HBoxContainer" instance=ExtResource("1_fsvlv")]
+layout_mode = 2

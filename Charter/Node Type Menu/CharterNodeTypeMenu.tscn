@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1tepacjfl6vu"]
+[gd_scene load_steps=4 format=3 uid="uid://c1tepacjfl6vu"]
 
 [ext_resource type="Texture2D" uid="uid://bgdvc6m8oju7c" path="res://icon.svg" id="1_olsri"]
 [ext_resource type="Script" path="res://Charter/Node Type Menu/CharterNodeTypeMenu.gd" id="1_xrobp"]
+[ext_resource type="PackedScene" uid="uid://dmrygu0hmivbp" path="res://Charter/Node Type Menu/Node Property/CharterNodeProperty.tscn" id="3_y7flg"]
 
 [node name="CharterNodeTypeMenu" type="PanelContainer"]
 anchors_preset = 10
@@ -39,68 +40,7 @@ text = "node"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PropertyStandard" type="PanelContainer" parent="VBoxContainer/MenuBody"]
-custom_minimum_size = Vector2(0, 48)
+[node name="CharterNodeProperty" parent="VBoxContainer/MenuBody" instance=ExtResource("3_y7flg")]
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MenuBody/PropertyStandard"]
-layout_mode = 2
-
-[node name="PropertyNameContainer" type="VBoxContainer" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="TextEdit" type="LineEdit" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyNameContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-placeholder_text = "property_name"
-
-[node name="PropertyValueContainer" type="HBoxContainer" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer"]
-layout_mode = 2
-selected = 0
-item_count = 4
-popup/item_0/text = "String"
-popup/item_1/text = "Number"
-popup/item_1/id = 1
-popup/item_2/text = "Boolean"
-popup/item_2/id = 2
-popup/item_3/text = "Array"
-popup/item_3/id = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="StringEdit" type="LineEdit" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "0"
-
-[node name="NumberEdit" type="LineEdit" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "Text"
-
-[node name="BoolEdit" type="CheckBox" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="ArrayEdit" type="VBoxContainer" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="NewButton" type="Button" parent="VBoxContainer/MenuBody/PropertyStandard/HBoxContainer/PropertyValueContainer/VBoxContainer/ArrayEdit"]
-layout_mode = 2
-text = "New item"
-alignment = 0
 
 [connection signal="pressed" from="VBoxContainer/MenuHeader/HBoxContainer/DropdownButton" to="." method="_on_dropdown_button_pressed"]
