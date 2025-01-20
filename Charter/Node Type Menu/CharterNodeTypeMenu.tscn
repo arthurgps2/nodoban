@@ -40,7 +40,10 @@ text = "node"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CharterNodeProperty" parent="VBoxContainer/MenuBody" instance=ExtResource("3_y7flg")]
+[node name="Items" type="VBoxContainer" parent="VBoxContainer/MenuBody"]
+layout_mode = 2
+
+[node name="CharterNodeProperty" parent="VBoxContainer/MenuBody/Items" instance=ExtResource("3_y7flg")]
 layout_mode = 2
 
 [connection signal="pressed" from="VBoxContainer/MenuHeader/HBoxContainer/DropdownButton" to="." method="_on_dropdown_button_pressed"]
