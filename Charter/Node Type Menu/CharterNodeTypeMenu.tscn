@@ -33,7 +33,7 @@ size_flags_vertical = 4
 
 [node name="RichTextLabel" type="LineEdit" parent="VBoxContainer/MenuHeader/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "node"
+placeholder_text = "node_type_name"
 
 [node name="DeleteButton" type="Button" parent="VBoxContainer/MenuHeader/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
