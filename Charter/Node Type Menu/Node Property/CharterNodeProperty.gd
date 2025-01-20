@@ -6,3 +6,6 @@ func get_property_name() -> String:
 
 func get_property_value() -> Variant:
 	return %PropertyValue.get_value()
+
+func _on_button_pressed() -> void:
+	queue_free()
