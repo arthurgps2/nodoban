@@ -17,8 +17,8 @@ func _draw():
 	draw_line(start_point, end_point, line_color, line_width)
 	
 	# Arrow heads
-	draw_triangle_on_line(.5)
-	draw_triangle_on_line(1)
+	var heads : int = max(floori(start_point.distance_to(end_point) / 75), 1)
+	for i in range(1, heads + 1): draw_triangle_on_line(float(i) / heads)
 
 func _process(_delta):
 	if start_node and end_node:
