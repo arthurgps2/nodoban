@@ -1,6 +1,18 @@
 class_name CharterNode
 extends PanelContainer
 
+const color_valid_type := Color(1, 1, 1)
+const color_invalid_type := Color(1, 0, 0)
+
+var type := "node"
+
+func _process(_delta: float) -> void:
+	%NodeTypeName.text = "[center]" + type
+	
+	# Warn user for invalid node types
+	modulate = (color_valid_type if ChartInfo.get_node_type_by_name(type) 
+		else color_invalid_type)
+
 func get_center() -> Vector2:
 	return position + size/2
 

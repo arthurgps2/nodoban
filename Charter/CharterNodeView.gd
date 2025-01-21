@@ -144,6 +144,8 @@ func _on_link_menu_index_pressed(index: int) -> void:
 	
 	link_in_context = null
 
+func _on_node_type_menu_index_pressed(index: int) -> void:
+	node_in_context.type = node_type_cmenu.get_item_text(index)
 
 func get_node_under_mouse() -> CharterNode:
 	for child in get_children():

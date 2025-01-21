@@ -123,4 +123,5 @@ item_1/id = 1
 [connection signal="pressed" from="UI/NodeTypes/ScrollContainer/NodeTypeContainer/NewNodeButton" to="UI" method="_on_new_node_button_pressed"]
 [connection signal="index_pressed" from="NodeView/EmptyRMBClickContextMenu" to="NodeView" method="_on_empty_menu_index_pressed"]
 [connection signal="index_pressed" from="NodeView/NodeRMBClickContextMenu" to="NodeView" method="_on_node_menu_index_pressed"]
+[connection signal="index_pressed" from="NodeView/NodeRMBClickContextMenu/NodeTypeSetContextMenu" to="NodeView" method="_on_node_type_menu_index_pressed"]
 [connection signal="index_pressed" from="NodeView/LinkRMBClickContextMenu" to="NodeView" method="_on_link_menu_index_pressed"]
