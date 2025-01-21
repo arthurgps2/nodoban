@@ -1,4 +1,4 @@
-class_name CharterNodePropertyValue
+class_name CharterPropertyValue
 extends HBoxContainer
 
 enum ITEM_ID {
@@ -24,7 +24,7 @@ func get_value() -> Variant:
 		ITEM_ID.ARRAY:
 			var return_value := []
 			for child in %ArrayEdit.get_children():
-				if child is not CharterNodePropertyValue: continue
+				if child is not CharterPropertyValue: continue
 				return_value.append(child.get_value())
 			return return_value
 			

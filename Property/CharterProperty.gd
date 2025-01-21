@@ -1,4 +1,4 @@
-class_name CharterNodeProperty
+class_name CharterProperty
 extends PanelContainer
 
 func _ready() -> void:

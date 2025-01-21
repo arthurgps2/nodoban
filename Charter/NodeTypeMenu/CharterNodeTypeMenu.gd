@@ -10,7 +10,7 @@ func get_node_type_properties() -> Dictionary:
 	var properties := {}
 	
 	for child in %MenuBody/Items.get_children():
-		if child is not CharterNodeProperty: continue
+		if child is not CharterProperty: continue
 		properties[child.get_property_name()] = child.get_property_value()
 	
 	return properties
