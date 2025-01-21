@@ -25,4 +25,5 @@ func _on_new_button_pressed() -> void:
 	%MenuBody/Items.move_child(%MenuBody/Items/NewButton, -1)
 
 func _on_delete_button_pressed() -> void:
+	ChartInfo.remove_node_type(self)
 	queue_free()

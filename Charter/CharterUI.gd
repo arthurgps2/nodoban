@@ -55,6 +55,7 @@ func _on_node_types_close_requested() -> void:
 
 func _on_new_node_button_pressed() -> void:
 	var node_type_menu = node_type_menu_scene.instantiate()
+	ChartInfo.add_node_type(node_type_menu)
 	%NodeTypeContainer.add_child(node_type_menu)
 	%NodeTypeContainer.move_child(node_type_menu, -1)
 	%NodeTypeContainer.move_child(%NodeTypeContainer/NewNodeButton, -1)

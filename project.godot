@@ -15,6 +15,10 @@ run/main_scene="res://Charter/Charter.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ChartInfo="*res://ChartInfo.gd"
+
 [input]
 
 left_click={

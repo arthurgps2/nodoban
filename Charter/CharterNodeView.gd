@@ -49,6 +49,7 @@ func _process(delta: float) -> void:
 			if node_under:
 				link_being_made.end_node = node_under
 				link_being_made.end_point = node_under.position
+				ChartInfo.add_link(link_being_made)
 			else:
 				link_being_made.queue_free()
 				
@@ -118,6 +119,7 @@ func _on_empty_menu_index_pressed(index: int) -> void:
 			var charter_node := charter_node_scene.instantiate()
 			charter_node.global_position = ((get_global_mouse_position() - position) / scale
 				- charter_node.size/2)
+			ChartInfo.add_node(charter_node)
 			add_child(charter_node)
 
 func _on_node_menu_index_pressed(index: int) -> void:
@@ -127,6 +129,7 @@ func _on_node_menu_index_pressed(index: int) -> void:
 			link_being_made.start_node = node_in_context
 			add_child(link_being_made)
 		NODE_MENU_ITEM_ID.DELETE_NODE: # Delete node
+			ChartInfo.remove_node(node_in_context)
 			node_in_context.delete()
 	
 	node_in_context = null
@@ -136,6 +139,7 @@ func _on_link_menu_index_pressed(index: int) -> void:
 		LINK_MENU_ITEM_ID.NEW_PROPERTY:
 			pass
 		LINK_MENU_ITEM_ID.DELETE_LINK:
+			ChartInfo.remove_link(link_in_context)
 			link_in_context.queue_free()
 	
 	link_in_context = null
