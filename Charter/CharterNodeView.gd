@@ -7,7 +7,7 @@ enum EMPTY_MENU_ITEM_ID {
 
 enum NODE_MENU_ITEM_ID {
 	NEW_LINK = 0,
-	DELETE_NODE = 1,
+	DELETE_NODE = 2,
 }
 
 enum LINK_MENU_ITEM_ID {
