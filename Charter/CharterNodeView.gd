@@ -1,3 +1,4 @@
+class_name CharterNodeView
 extends Control
 
 enum EMPTY_MENU_ITEM_ID {
@@ -28,8 +29,14 @@ var link_being_made : CharterLink
 
 @onready var empty_cmenu : PopupMenu = $EmptyRMBClickContextMenu
 @onready var node_cmenu : PopupMenu = $NodeRMBClickContextMenu
+@onready var node_type_cmenu : PopupMenu = node_cmenu.get_child(0)
 @onready var link_cmenu : PopupMenu = $LinkRMBClickContextMenu
 @onready var node_types_window : Window = get_node("../UI/NodeTypes")
+@onready var ui_node : CharterUI
+
+func _ready() -> void:
+	node_cmenu.set_item_submenu_node(1, node_type_cmenu)
+	ui_node = get_node("../UI")
 
 func _process(delta: float) -> void:
 	# Node management
@@ -66,6 +73,7 @@ func _process(delta: float) -> void:
 			empty_cmenu.hide()
 			link_cmenu.hide()
 			
+			update_node_type_cmenu()
 			node_cmenu.position = get_global_mouse_position()
 			node_cmenu.show()
 			node_in_context = node_under
@@ -149,3 +157,8 @@ func get_link_under_mouse() -> CharterLink:
 			return child
 	
 	return null
+
+func update_node_type_cmenu() -> void:
+	node_type_cmenu.clear()
+	for type in ui_node.get_node_type_names():
+		node_type_cmenu.add_item(type)

@@ -1,3 +1,4 @@
+class_name CharterUI
 extends Control
 
 enum OPTIONS_ITEM_ID {
@@ -26,6 +27,14 @@ func save_file(path : String) -> void:
 
 func load_file(path : String) -> void:
 	pass
+
+func get_node_type_names() -> Array:
+	var types := []
+	for child in %NodeTypeContainer.get_children():
+		if child is not CharterNodeTypeMenu: continue
+		types.append(child.get_node_type_name())
+	
+	return types
 
 func _ready() -> void:
 	%OptionsMenuButton.get_popup().index_pressed.connect(_on_options_menu_index_pressed)

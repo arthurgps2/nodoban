@@ -101,10 +101,14 @@ item_0/text = "Create new node"
 
 [node name="NodeRMBClickContextMenu" type="PopupMenu" parent="NodeView"]
 size = Vector2i(141, 100)
-item_count = 2
+item_count = 3
 item_0/text = "Create new link"
-item_1/text = "Delete node"
-item_1/id = 1
+item_1/text = "Set node type"
+item_1/id = 2
+item_2/text = "Delete node"
+item_2/id = 1
+
+[node name="NodeTypeSetContextMenu" type="PopupMenu" parent="NodeView/NodeRMBClickContextMenu"]
 
 [node name="LinkRMBClickContextMenu" type="PopupMenu" parent="NodeView"]
 auto_translate_mode = 1
