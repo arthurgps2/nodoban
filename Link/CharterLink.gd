@@ -6,6 +6,7 @@ const line_width := 2.5
 const arrow_size = 10
 
 var start_point := Vector2()
+var center_point := Vector2()
 var end_point := Vector2()
 
 var start_node : CharterNode
@@ -19,7 +20,7 @@ func _draw():
 	var direction = (end_point - start_point).normalized()
 	var perp = Vector2(-direction.y, direction.x)
 	
-	var tip = lerp(start_point, end_point, .5)
+	var tip = center_point
 	var base1 = tip - (direction - perp) * arrow_size
 	var base2 = tip - (direction + perp) * arrow_size
 	
@@ -30,4 +31,5 @@ func _process(_delta):
 		start_point = start_node.get_center()
 		end_point = end_node.get_center()
 	
+	center_point = lerp(start_point, end_point, .5)
 	queue_redraw()

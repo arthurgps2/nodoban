@@ -13,6 +13,7 @@ var link_being_made : CharterLink
 
 @onready var empty_cmenu : PopupMenu = $EmptyRMBClickContextMenu
 @onready var node_cmenu : PopupMenu = $NodeRMBClickContextMenu
+@onready var link_cmenu : PopupMenu = $LinkRMBClickContextMenu
 @onready var node_types_window : Window = get_node("../UI/NodeTypes")
 
 func _process(delta: float) -> void:
@@ -44,14 +45,24 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("right_click") and not node_types_window.has_focus():
 		var node_under = get_node_under_mouse()
+		var link_under = get_link_under_mouse()
+		
 		if node_under:
 			empty_cmenu.hide()
+			link_cmenu.hide()
 			
 			node_cmenu.position = get_global_mouse_position()
 			node_cmenu.show()
 			node_in_context = node_under
+		elif link_under:
+			empty_cmenu.hide()
+			node_cmenu.hide()
+			
+			link_cmenu.position = get_global_mouse_position()
+			link_cmenu.show()
 		else: # Clicked on the void
 			node_cmenu.hide()
+			link_cmenu.hide()
 			
 			empty_cmenu.position = get_global_mouse_position()
 			empty_cmenu.show()
@@ -99,6 +110,14 @@ func _on_node_menu_index_pressed(index: int) -> void:
 func get_node_under_mouse() -> CharterNode:
 	for child in get_children():
 		if child is CharterNode and child.get_global_rect().has_point(get_global_mouse_position()):
+			return child
+	
+	return null
+
+func get_link_under_mouse() -> CharterLink:
+	for child in get_children():
+		if (child is CharterLink 
+		and child.center_point.distance_squared_to(get_local_mouse_position()) < 400):
 			return child
 	
 	return null

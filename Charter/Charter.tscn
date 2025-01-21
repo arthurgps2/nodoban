@@ -106,6 +106,14 @@ item_0/text = "Create new link"
 item_1/text = "Delete node"
 item_1/id = 1
 
+[node name="LinkRMBClickContextMenu" type="PopupMenu" parent="NodeView"]
+auto_translate_mode = 1
+size = Vector2i(141, 100)
+item_count = 2
+item_0/text = "Add link property"
+item_1/text = "Delete link"
+item_1/id = 1
+
 [connection signal="file_selected" from="UI/FileDialog" to="UI" method="_on_file_dialog_file_selected"]
 [connection signal="close_requested" from="UI/NodeTypes" to="UI" method="_on_node_types_close_requested"]
 [connection signal="pressed" from="UI/NodeTypes/ScrollContainer/NodeTypeContainer/NewNodeButton" to="UI" method="_on_new_node_button_pressed"]
