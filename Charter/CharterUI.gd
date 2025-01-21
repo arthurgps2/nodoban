@@ -1,5 +1,11 @@
 extends Control
 
+enum OPTIONS_ITEM_ID {
+	SAVE_FILE = 0,
+	LOAD_FILE = 1,
+	NODE_TYPES = 2,
+}
+
 const node_type_menu_scene : PackedScene = preload("res://Charter/Node Type Menu/CharterNodeTypeMenu.tscn")
 
 func save_file(path : String) -> void:
@@ -26,13 +32,13 @@ func _ready() -> void:
 
 func _on_options_menu_index_pressed(index : int):
 	match index:
-		0: # Save file
+		OPTIONS_ITEM_ID.SAVE_FILE: # Save file
 			$FileDialog.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 			$FileDialog.show()
-		1: # Load file
+		OPTIONS_ITEM_ID.LOAD_FILE: # Load file
 			$FileDialog.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 			$FileDialog.show()
-		2: # Node types
+		OPTIONS_ITEM_ID.NODE_TYPES: # Node types
 			$NodeTypes.show()
 
 func _on_node_types_close_requested() -> void:

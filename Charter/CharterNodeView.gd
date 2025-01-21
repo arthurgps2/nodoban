@@ -1,5 +1,14 @@
 extends Control
 
+enum EMPTY_MENU_ITEM_ID {
+	NEW_NODE = 0
+}
+
+enum NODE_MENU_ITEM_ID {
+	NEW_LINK = 0,
+	DELETE_NODE = 1,
+}
+
 const zoom_factor := .05
 const charter_node_scene : PackedScene = preload("res://Node/CharterNode.tscn")
 const charter_link_scene : PackedScene = preload("res://Link/CharterLink.tscn")
@@ -90,7 +99,7 @@ func _process(delta: float) -> void:
 
 func _on_empty_menu_index_pressed(index: int) -> void:
 	match index:
-		0: # Create new node
+		EMPTY_MENU_ITEM_ID.NEW_NODE: # Create new node
 			var charter_node := charter_node_scene.instantiate()
 			charter_node.global_position = ((get_global_mouse_position() - position) / scale
 				- charter_node.size/2)
@@ -98,11 +107,11 @@ func _on_empty_menu_index_pressed(index: int) -> void:
 
 func _on_node_menu_index_pressed(index: int) -> void:
 	match index:
-		0: # Create new link
+		NODE_MENU_ITEM_ID.NEW_LINK: # Create new link
 			link_being_made = charter_link_scene.instantiate()
 			link_being_made.start_node = node_in_context
 			add_child(link_being_made)
-		1: # Delete node
+		NODE_MENU_ITEM_ID.DELETE_NODE: # Delete node
 			node_in_context.delete()
 	
 	node_in_context = null
