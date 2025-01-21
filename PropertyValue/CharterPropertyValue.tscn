@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsf00q17e4aoy"]
 
-[ext_resource type="Script" path="res://Charter/Node Type Menu/Node Property Value/CharterNodePropertyValue.gd" id="1_8ilfw"]
+[ext_resource type="Script" path="res://PropertyValue/CharterPropertyValue.gd" id="1_8ilfw"]
 [ext_resource type="Texture2D" uid="uid://bgdvc6m8oju7c" path="res://icon.svg" id="2_n8plp"]
 
 [node name="CharterNodePropertyValue" type="HBoxContainer"]

@@ -6,7 +6,7 @@ enum OPTIONS_ITEM_ID {
 	NODE_TYPES = 2,
 }
 
-const node_type_menu_scene : PackedScene = preload("res://Charter/Node Type Menu/CharterNodeTypeMenu.tscn")
+const node_type_menu_scene : PackedScene = preload("res://Charter/NodeTypeMenu/CharterNodeTypeMenu.tscn")
 
 func save_file(path : String) -> void:
 	var chart := {

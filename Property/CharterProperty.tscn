@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmrygu0hmivbp"]
 
-[ext_resource type="PackedScene" uid="uid://bsf00q17e4aoy" path="res://Charter/Node Type Menu/Node Property Value/CharterNodePropertyValue.tscn" id="1_fsvlv"]
-[ext_resource type="Script" path="res://Charter/Node Type Menu/Node Property/CharterNodeProperty.gd" id="1_gavam"]
+[ext_resource type="PackedScene" uid="uid://bsf00q17e4aoy" path="res://PropertyValue/CharterPropertyValue.tscn" id="1_fsvlv"]
+[ext_resource type="Script" path="res://Property/CharterProperty.gd" id="1_gavam"]
 
 [node name="CharterNodeProperty" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 48)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1tepacjfl6vu"]
 
 [ext_resource type="Texture2D" uid="uid://bgdvc6m8oju7c" path="res://icon.svg" id="1_olsri"]
-[ext_resource type="Script" path="res://Charter/Node Type Menu/CharterNodeTypeMenu.gd" id="1_xrobp"]
+[ext_resource type="Script" path="res://Charter/NodeTypeMenu/CharterNodeTypeMenu.gd" id="1_xrobp"]
 
 [node name="CharterNodeTypeMenu" type="PanelContainer"]
 anchors_preset = 10
