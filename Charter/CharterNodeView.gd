@@ -126,7 +126,9 @@ func get_node_under_mouse() -> CharterNode:
 func get_link_under_mouse() -> CharterLink:
 	for child in get_children():
 		if (child is CharterLink 
-		and child.center_point.distance_squared_to(get_local_mouse_position()) < 400):
+		and Geometry2D.get_closest_point_to_segment(
+		get_local_mouse_position(), child.start_point, child.end_point)
+		.distance_squared_to(get_local_mouse_position()) < 400):
 			return child
 	
 	return null
