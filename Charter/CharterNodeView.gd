@@ -9,6 +9,11 @@ enum NODE_MENU_ITEM_ID {
 	DELETE_NODE = 1,
 }
 
+enum LINK_MENU_ITEM_ID {
+	NEW_PROPERTY = 0,
+	DELETE_LINK = 1,
+}
+
 const zoom_factor := .05
 const charter_node_scene : PackedScene = preload("res://Node/CharterNode.tscn")
 const charter_link_scene : PackedScene = preload("res://Link/CharterLink.tscn")
@@ -18,6 +23,7 @@ var node_drag_offset : Vector2
 var view_dragging := false
 var view_drag_offset : Vector2
 var node_in_context : CharterNode
+var link_in_context : CharterLink
 var link_being_made : CharterLink
 
 @onready var empty_cmenu : PopupMenu = $EmptyRMBClickContextMenu
@@ -69,6 +75,7 @@ func _process(delta: float) -> void:
 			
 			link_cmenu.position = get_global_mouse_position()
 			link_cmenu.show()
+			link_in_context = link_under
 		else: # Clicked on the void
 			node_cmenu.hide()
 			link_cmenu.hide()
@@ -115,6 +122,16 @@ func _on_node_menu_index_pressed(index: int) -> void:
 			node_in_context.delete()
 	
 	node_in_context = null
+
+func _on_link_menu_index_pressed(index: int) -> void:
+	match index:
+		LINK_MENU_ITEM_ID.NEW_PROPERTY:
+			pass
+		LINK_MENU_ITEM_ID.DELETE_LINK:
+			link_in_context.queue_free()
+	
+	link_in_context = null
+
 
 func get_node_under_mouse() -> CharterNode:
 	for child in get_children():
