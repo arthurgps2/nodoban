@@ -2,6 +2,8 @@ class_name CharterNodeTypeMenu
 extends PanelContainer
 
 const property_scene : PackedScene = preload("res://Property/CharterProperty.tscn")
+const icon_dropdown_open : Texture2D = preload("res://Icons/ArrowDown.png")
+const icon_dropdown_closed : Texture2D = preload("res://Icons/ArrowRight.png")
 
 func add_new_property() -> CharterProperty:
 	var node_property := property_scene.instantiate()
@@ -35,6 +37,8 @@ func set_node_type_properties(properties : Dictionary) -> void:
 
 func _on_dropdown_button_pressed() -> void:
 	%MenuBody.visible = not %MenuBody.visible
+	if %MenuBody.visible: %DropdownButton.icon = icon_dropdown_open
+	else: %DropdownButton.icon = icon_dropdown_closed
 
 func _on_new_button_pressed() -> void:
 	add_new_property()
