@@ -16,8 +16,12 @@ func save_to_file(path : String) -> void:
 	}
 	
 	# Store node types
-	for node_type : CharterNodeTypeMenu in node_types:
-		chart.node_types[node_type.get_node_type_name()] = node_type.get_node_type_properties()
+	for i : int in node_types.size():
+		var node_type : CharterNodeTypeMenu = node_types[i]
+		
+		var node_type_properties = node_type.get_node_type_properties() 
+		node_type_properties.__order = i
+		chart.node_types[node_type.get_node_type_name()] = node_type_properties
 	
 	# Store nodes
 	for node : CharterNode in nodes:
@@ -57,7 +61,10 @@ func load_from_file(path : String) -> void:
 	links = []
 	
 	# Load node types
-	for node_type in chart.node_types:
+	var node_type_keys = chart.node_types.keys()
+	node_type_keys.sort_custom(func(a, b): return chart.node_types[a].__order < chart.node_types[b].__order)
+	
+	for node_type in node_type_keys:
 		var charter_node_type = ui.add_new_node_type()
 		charter_node_type.set_node_type_name(node_type)
 		charter_node_type.set_node_type_properties(chart.node_types[node_type])
