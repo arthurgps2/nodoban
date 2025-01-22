@@ -7,7 +7,7 @@ enum EMPTY_MENU_ITEM_ID {
 
 enum NODE_MENU_ITEM_ID {
 	NEW_LINK = 0,
-	ADD_OVERRIDE = 2,
+	ADD_OVERWRITE = 2,
 	DELETE_NODE = 3,
 }
 
@@ -133,9 +133,9 @@ func _on_node_menu_index_pressed(index: int) -> void:
 		NODE_MENU_ITEM_ID.DELETE_NODE: # Delete node
 			ChartInfo.remove_node(node_in_context)
 			node_in_context.delete()
-		NODE_MENU_ITEM_ID.ADD_OVERRIDE:
+		NODE_MENU_ITEM_ID.ADD_OVERWRITE:
 			var charter_property := charter_property_scene.instantiate()
-			node_in_context.get_node("NameAndOverrideContainer").add_child(charter_property)
+			node_in_context.get_node("NameAndOverwriteContainer").add_child(charter_property)
 	
 	node_in_context = null
 
