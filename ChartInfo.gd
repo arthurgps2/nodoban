@@ -54,6 +54,10 @@ func load_from_file(path : String) -> void:
 	links = []
 	
 	# Load node types
+	for node_type in chart.node_types:
+		var charter_node_type = ui.add_new_node_type()
+		charter_node_type.set_node_type_name(node_type)
+		charter_node_type.set_node_type_properties(chart.node_types[node_type])
 	
 	# Load nodes
 	for node in chart.nodes:

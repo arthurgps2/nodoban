@@ -9,6 +9,15 @@ enum OPTIONS_ITEM_ID {
 
 const node_type_menu_scene : PackedScene = preload("res://Charter/NodeTypeMenu/CharterNodeTypeMenu.tscn")
 
+func add_new_node_type() -> CharterNodeTypeMenu:
+	var node_type_menu = node_type_menu_scene.instantiate()
+	ChartInfo.add_node_type(node_type_menu)
+	%NodeTypeContainer.add_child(node_type_menu)
+	%NodeTypeContainer.move_child(node_type_menu, -1)
+	%NodeTypeContainer.move_child(%NodeTypeContainer/NewNodeButton, -1)
+	
+	return node_type_menu
+
 func get_node_type_names() -> Array:
 	var types := []
 	for child in %NodeTypeContainer.get_children():
@@ -39,11 +48,7 @@ func _on_node_types_close_requested() -> void:
 	$NodeTypes.hide()
 
 func _on_new_node_button_pressed() -> void:
-	var node_type_menu = node_type_menu_scene.instantiate()
-	ChartInfo.add_node_type(node_type_menu)
-	%NodeTypeContainer.add_child(node_type_menu)
-	%NodeTypeContainer.move_child(node_type_menu, -1)
-	%NodeTypeContainer.move_child(%NodeTypeContainer/NewNodeButton, -1)
+	add_new_node_type()
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	match $FileDialog.file_mode:
