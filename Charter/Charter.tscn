@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Charter/CharterUI.gd" id="1_7qrr2"]
 [ext_resource type="Script" path="res://Charter/CharterNodeView.gd" id="2_5jmha"]
-[ext_resource type="Texture2D" uid="uid://bgdvc6m8oju7c" path="res://icon.svg" id="2_s307i"]
+[ext_resource type="Texture2D" uid="uid://b7eag8o2ggp77" path="res://Icons/Options.png" id="2_q3u1d"]
 
 [node name="Charter" type="Control"]
 layout_mode = 3
@@ -36,7 +36,7 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-icon = ExtResource("2_s307i")
+icon = ExtResource("2_q3u1d")
 expand_icon = true
 item_count = 3
 popup/item_0/text = "Save file"
