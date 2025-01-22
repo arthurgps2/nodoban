@@ -13,9 +13,11 @@ var end_point := Vector2()
 var start_node : CharterNode
 var end_node : CharterNode
 
-func add_new_property() -> void:
+func add_new_property() -> CharterProperty:
 	var charter_property = charter_property_scene.instantiate()
 	$OverwriteContainer.add_child(charter_property)
+	
+	return charter_property
 
 func get_link_info() -> Dictionary:
 	var info := {from = null, to = null}
@@ -31,6 +33,18 @@ func get_link_info() -> Dictionary:
 		info[property.get_property_name()] = property.get_property_value()
 	
 	return info
+
+func set_link_info(info : Dictionary) -> void:
+	# Start and end nodes
+	start_node = ChartInfo.nodes[info.from]
+	end_node = ChartInfo.nodes[info.to]
+	
+	# Other properties
+	for key in info:
+		if key == "from" or key == "to": continue
+		var property := add_new_property()
+		property.set_property_name(key)
+		property.set_property_value(info[key])
 
 func _draw():
 	# Main line

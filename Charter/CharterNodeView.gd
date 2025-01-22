@@ -44,6 +44,13 @@ func add_new_node() -> CharterNode:
 	
 	return charter_node
 
+func add_new_link() -> CharterLink:
+	var charter_link := charter_link_scene.instantiate()
+	ChartInfo.add_link(charter_link)
+	add_child(charter_link)
+	
+	return charter_link
+
 func clear_nodes_and_links() -> void:
 	for child in get_children():
 		if child is CharterNode: child.delete()
@@ -62,12 +69,11 @@ func _process(delta: float) -> void:
 		
 		if link_being_made:
 			if node_under:
-				link_being_made.end_node = node_under
-				link_being_made.end_point = node_under.position
-				ChartInfo.add_link(link_being_made)
-			else:
-				link_being_made.queue_free()
-				
+				var new_link = add_new_link()
+				new_link.start_node = link_being_made.start_node
+				new_link.end_node = node_under
+			
+			link_being_made.queue_free()
 			link_being_made = null
 		else:
 			if node_under:

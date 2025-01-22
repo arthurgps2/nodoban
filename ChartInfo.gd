@@ -61,6 +61,9 @@ func load_from_file(path : String) -> void:
 		charter_node.set_node_info(node)
 	
 	# Load links
+	for link in chart.links:
+		var charter_link = node_view.add_new_link()
+		charter_link.set_link_info(link)
 
 # Node types
 func add_node_type(node_type : CharterNodeTypeMenu) -> void:
