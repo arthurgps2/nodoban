@@ -35,6 +35,20 @@ var link_being_made : CharterLink
 @onready var node_types_window : Window = get_node("../UI/NodeTypes")
 @onready var ui_node : CharterUI
 
+func add_new_node() -> CharterNode:
+	var charter_node := charter_node_scene.instantiate()
+	charter_node.global_position = ((get_global_mouse_position() - position) / scale
+		- charter_node.size/2)
+	ChartInfo.add_node(charter_node)
+	add_child(charter_node)
+	
+	return charter_node
+
+func clear_nodes_and_links() -> void:
+	for child in get_children():
+		if child is CharterNode: child.delete()
+		elif child is CharterLink: child.queue_free()
+
 func _ready() -> void:
 	node_cmenu.set_item_submenu_node(1, node_type_cmenu)
 	ui_node = get_node("../UI")
@@ -117,11 +131,7 @@ func _process(delta: float) -> void:
 func _on_empty_menu_index_pressed(index: int) -> void:
 	match index:
 		EMPTY_MENU_ITEM_ID.NEW_NODE: # Create new node
-			var charter_node := charter_node_scene.instantiate()
-			charter_node.global_position = ((get_global_mouse_position() - position) / scale
-				- charter_node.size/2)
-			ChartInfo.add_node(charter_node)
-			add_child(charter_node)
+			add_new_node()
 
 func _on_node_menu_index_pressed(index: int) -> void:
 	match index:
@@ -133,7 +143,7 @@ func _on_node_menu_index_pressed(index: int) -> void:
 			ChartInfo.remove_node(node_in_context)
 			node_in_context.delete()
 		NODE_MENU_ITEM_ID.ADD_OVERWRITE:
-			node_in_context.add_new_override()
+			node_in_context.add_new_overwrite()
 	
 	node_in_context = null
 

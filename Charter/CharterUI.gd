@@ -17,6 +17,10 @@ func get_node_type_names() -> Array:
 	
 	return types
 
+func clear_node_types() -> void:
+	for child in %NodeTypeContainer.get_children():
+		if child is CharterNodeTypeMenu: child.queue_free()
+
 func _ready() -> void:
 	%OptionsMenuButton.get_popup().index_pressed.connect(_on_options_menu_index_pressed)
 

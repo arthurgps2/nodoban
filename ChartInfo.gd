@@ -1,5 +1,8 @@
 extends Node
 
+@onready var ui : CharterUI = get_node("/root/Charter/UI")
+@onready var node_view : CharterNodeView = get_node("/root/Charter/NodeView")
+
 var node_types : Array = []
 var nodes : Array = []
 var links : Array = []
@@ -34,7 +37,30 @@ func save_to_file(path : String) -> void:
 	
 # Load JSON file
 func load_from_file(path : String) -> void:
-	pass
+	# Load JSON file
+	var file = FileAccess.open(path, FileAccess.READ)
+	var chart_json = file.get_line()
+	file.close()
+	
+	# Parse JSON and clear vars
+	var chart = JSON.parse_string(chart_json)
+	
+	# Clear everything
+	ui.clear_node_types()
+	node_view.clear_nodes_and_links()
+	
+	node_types = []
+	nodes = []
+	links = []
+	
+	# Load node types
+	
+	# Load nodes
+	for node in chart.nodes:
+		var charter_node = node_view.add_new_node()
+		charter_node.set_node_info(node)
+	
+	# Load links
 
 # Node types
 func add_node_type(node_type : CharterNodeTypeMenu) -> void:

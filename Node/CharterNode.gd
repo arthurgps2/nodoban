@@ -27,6 +27,18 @@ func get_node_info() -> Dictionary:
 	
 	return info
 
+func set_node_info(info : Dictionary) -> void:
+	# Type and position
+	type = info.type
+	position = Vector2(info.__posx, info.__posy)
+	
+	# Overwrites
+	for key : String in info:
+		if key == "type" or key.begins_with("__"): continue
+		var overwrite := add_new_overwrite()
+		overwrite.set_property_name(key)
+		overwrite.set_property_value(info[key])
+
 func get_node_overwrites() -> Dictionary:
 	var overwrites = {}
 	for child in $NameAndOverwriteContainer.get_children():
@@ -39,9 +51,10 @@ func get_node_overwrites() -> Dictionary:
 func get_center() -> Vector2:
 	return position + size/2
 
-func add_new_override() -> void:
+func add_new_overwrite() -> CharterProperty:
 	var charter_property = charter_property_scene.instantiate()
 	$NameAndOverwriteContainer.add_child(charter_property)
+	return charter_property
 
 func delete() -> void:
 	for child in get_node("..").get_children():

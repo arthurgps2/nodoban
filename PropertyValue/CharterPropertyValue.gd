@@ -30,6 +30,32 @@ func get_value() -> Variant:
 			
 		_: return null
 
+func set_value(value : Variant) -> void:
+	match typeof(value):
+		TYPE_STRING:
+			%ValueType.selected = ITEM_ID.STRING
+			%StringEdit.text = value
+		TYPE_INT, TYPE_FLOAT:
+			%ValueType.selected = ITEM_ID.NUMBER
+			%NumberEdit.text = str(value)
+		TYPE_BOOL:
+			%ValueType.selected = ITEM_ID.BOOL
+			%BoolEdit.button_pressed = value
+		TYPE_ARRAY:
+			%ValueType.selected = ITEM_ID.ARRAY
+			for item in value:
+				var array_item = add_array_item()
+				array_item.set_value(item)
+
+func add_array_item() -> CharterProperty:
+	var node_property_value := property_value_scene.instantiate()
+	node_property_value.get_node("%DeleteButton").pressed.connect(node_property_value._on_delete_button_pressed)
+	%ArrayEdit.add_child(node_property_value)
+	%ArrayEdit.move_child(node_property_value, -1)
+	%ArrayEdit.move_child(%ArrayEdit/NewArrayItemButton, -1)
+	
+	return node_property_value
+
 func _on_value_type_item_selected(index: int) -> void:
 	%StringEdit.visible = false
 	%NumberEdit.visible = false
@@ -47,11 +73,7 @@ func _on_value_type_item_selected(index: int) -> void:
 			%ArrayEdit.visible = true
 
 func _on_new_array_item_button_pressed() -> void:
-	var node_property_value := property_value_scene.instantiate()
-	node_property_value.get_node("%DeleteButton").pressed.connect(node_property_value._on_delete_button_pressed)
-	%ArrayEdit.add_child(node_property_value)
-	%ArrayEdit.move_child(node_property_value, -1)
-	%ArrayEdit.move_child(%ArrayEdit/NewArrayItemButton, -1)
+	add_array_item()
 
 func _on_delete_button_pressed() -> void:
 	queue_free()
