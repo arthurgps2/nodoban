@@ -35,6 +35,9 @@ func save_to_file(path : String) -> void:
 	file.store_line(chart_json)
 	file.close()
 	
+	# Set file path text
+	ui.get_node("%FilePath").text = path
+	
 # Load JSON file
 func load_from_file(path : String) -> void:
 	# Load JSON file
@@ -68,6 +71,9 @@ func load_from_file(path : String) -> void:
 	for link in chart.links:
 		var charter_link = node_view.add_new_link()
 		charter_link.set_link_info(link)
+		
+	# Done, now just set the file path text
+	ui.get_node("%FilePath").text = path
 
 # Node types
 func add_node_type(node_type : CharterNodeTypeMenu) -> void:
