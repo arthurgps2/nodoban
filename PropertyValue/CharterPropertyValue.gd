@@ -46,6 +46,8 @@ func set_value(value : Variant) -> void:
 			for item in value:
 				var array_item = add_array_item()
 				array_item.set_value(item)
+	
+	%ValueType.item_selected.emit(%ValueType.selected)
 
 func add_array_item() -> CharterProperty:
 	var node_property_value := property_value_scene.instantiate()
