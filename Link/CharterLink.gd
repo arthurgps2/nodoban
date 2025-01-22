@@ -3,7 +3,8 @@ extends Control
 
 const line_color := Color(1, 1, 1)
 const line_width := 2.5
-const arrow_size = 10
+const arrow_size := 10
+const charter_property_scene : PackedScene = preload("res://Property/CharterProperty.tscn")
 
 var start_point := Vector2()
 var center_point := Vector2()
@@ -11,6 +12,10 @@ var end_point := Vector2()
 
 var start_node : CharterNode
 var end_node : CharterNode
+
+func add_new_property() -> void:
+	var charter_property = charter_property_scene.instantiate()
+	$OverwriteContainer.add_child(charter_property)
 
 func _draw():
 	# Main line
@@ -32,6 +37,10 @@ func _process(_delta):
 		if end_intersect: end_point = end_intersect
 	
 	center_point = lerp(start_point, end_point, .5)
+	
+	$OverwriteContainer.size = $OverwriteContainer.custom_minimum_size
+	$OverwriteContainer.position = center_point - $OverwriteContainer.size / 2
+	
 	queue_redraw()
 
 func draw_triangle_on_line(position : float) -> void:

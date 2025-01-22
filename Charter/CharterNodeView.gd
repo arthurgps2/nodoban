@@ -140,7 +140,7 @@ func _on_node_menu_index_pressed(index: int) -> void:
 func _on_link_menu_index_pressed(index: int) -> void:
 	match index:
 		LINK_MENU_ITEM_ID.NEW_PROPERTY:
-			pass
+			link_in_context.add_new_property()
 		LINK_MENU_ITEM_ID.DELETE_LINK:
 			ChartInfo.remove_link(link_in_context)
 			link_in_context.queue_free()
