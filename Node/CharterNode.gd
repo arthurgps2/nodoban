@@ -3,6 +3,7 @@ extends PanelContainer
 
 const color_valid_type := Color(1, 1, 1)
 const color_invalid_type := Color(1, 0, 0)
+const charter_property_scene : PackedScene = preload("res://Property/CharterProperty.tscn")
 
 var type := "node"
 
@@ -16,8 +17,15 @@ func _process(_delta: float) -> void:
 func get_center() -> Vector2:
 	return position + size/2
 
+func add_new_override() -> void:
+	var charter_property = charter_property_scene.instantiate()
+	$NameAndOverwriteContainer.add_child(charter_property)
+
 func delete() -> void:
 	for child in get_node("..").get_children():
 		if child is CharterLink and (child.start_node == self or child.end_node == self):
 			child.queue_free()
 	queue_free()
+
+func _on_name_and_overwrite_container_child_order_changed() -> void:
+	size = custom_minimum_size

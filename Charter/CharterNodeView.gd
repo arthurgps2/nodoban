@@ -18,7 +18,6 @@ enum LINK_MENU_ITEM_ID {
 
 const zoom_factor := .05
 const charter_node_scene : PackedScene = preload("res://Node/CharterNode.tscn")
-const charter_property_scene : PackedScene = preload("res://Property/CharterProperty.tscn")
 const charter_link_scene : PackedScene = preload("res://Link/CharterLink.tscn")
 
 var node_dragging : CharterNode
@@ -134,8 +133,7 @@ func _on_node_menu_index_pressed(index: int) -> void:
 			ChartInfo.remove_node(node_in_context)
 			node_in_context.delete()
 		NODE_MENU_ITEM_ID.ADD_OVERWRITE:
-			var charter_property := charter_property_scene.instantiate()
-			node_in_context.get_node("NameAndOverwriteContainer").add_child(charter_property)
+			node_in_context.add_new_override()
 	
 	node_in_context = null
 

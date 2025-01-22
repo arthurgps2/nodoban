@@ -11,6 +11,7 @@ script = ExtResource("1_a6eym")
 
 [node name="NameAndOverwriteContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="NodeTypeNameContainer" type="PanelContainer" parent="NameAndOverwriteContainer"]
 custom_minimum_size = Vector2(128, 48)
@@ -27,3 +28,5 @@ layout_mode = 2
 bbcode_enabled = true
 text = "[center]node"
 fit_content = true
+
+[connection signal="child_order_changed" from="NameAndOverwriteContainer" to="." method="_on_name_and_overwrite_container_child_order_changed"]
