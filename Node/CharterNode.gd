@@ -9,6 +9,7 @@ var type := "node"
 
 func _process(_delta: float) -> void:
 	%NodeTypeName.text = "[center]" + type
+	size = custom_minimum_size
 	
 	# Warn user for invalid node types
 	modulate = (color_valid_type if ChartInfo.get_node_type_by_name(type) 
@@ -26,6 +27,3 @@ func delete() -> void:
 		if child is CharterLink and (child.start_node == self or child.end_node == self):
 			child.queue_free()
 	queue_free()
-
-func _on_name_and_overwrite_container_child_order_changed() -> void:
-	size = custom_minimum_size

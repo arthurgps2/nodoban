@@ -28,5 +28,3 @@ layout_mode = 2
 bbcode_enabled = true
 text = "[center]node"
 fit_content = true
-
-[connection signal="child_order_changed" from="NameAndOverwriteContainer" to="." method="_on_name_and_overwrite_container_child_order_changed"]
