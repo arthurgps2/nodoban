@@ -30,7 +30,8 @@ func get_node_type_properties() -> Dictionary:
 	return properties
 
 func set_node_type_properties(properties : Dictionary) -> void:
-	for property in properties:
+	for property : String in properties:
+		if property.begins_with("__"): continue
 		var charter_property := add_new_property()
 		charter_property.set_property_name(property)
 		charter_property.set_property_value(properties[property])
