@@ -17,6 +17,21 @@ func add_new_property() -> void:
 	var charter_property = charter_property_scene.instantiate()
 	$OverwriteContainer.add_child(charter_property)
 
+func get_link_info() -> Dictionary:
+	var info := {from = null, to = null}
+	var nodes := ChartInfo.get_nodes()
+	for i in nodes.size():
+		var node = nodes[i]
+		if node == start_node: info.from = i
+		elif node == end_node: info.to = i
+	
+	for child in $OverwriteContainer.get_children():
+		if child is not CharterProperty: continue
+		var property : CharterProperty = child
+		info[property.get_property_name()] = property.get_property_value()
+	
+	return info
+
 func _draw():
 	# Main line
 	draw_line(start_point, end_point, line_color, line_width)

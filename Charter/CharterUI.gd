@@ -9,25 +9,6 @@ enum OPTIONS_ITEM_ID {
 
 const node_type_menu_scene : PackedScene = preload("res://Charter/NodeTypeMenu/CharterNodeTypeMenu.tscn")
 
-func save_file(path : String) -> void:
-	var chart := {
-		node_types = {},
-		nodes = [],
-		links = [],
-	}
-	
-	# Node types
-	for child in %NodeTypeContainer.get_children():
-		if child is not CharterNodeTypeMenu: continue
-		chart.node_types[child.get_node_type_name()] = child.get_node_type_properties()
-	
-	# Convert to JSON
-	var chart_json := JSON.stringify(chart)
-	print(chart_json)
-
-func load_file(path : String) -> void:
-	pass
-
 func get_node_type_names() -> Array:
 	var types := []
 	for child in %NodeTypeContainer.get_children():
@@ -62,5 +43,5 @@ func _on_new_node_button_pressed() -> void:
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	match $FileDialog.file_mode:
-		FileDialog.FILE_MODE_SAVE_FILE: save_file(path)
-		FileDialog.FILE_MODE_OPEN_FILE: load_file(path)
+		FileDialog.FILE_MODE_SAVE_FILE: ChartInfo.save_to_file(path)
+		FileDialog.FILE_MODE_OPEN_FILE: ChartInfo.load_from_file(path)

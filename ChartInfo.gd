@@ -4,6 +4,38 @@ var node_types : Array = []
 var nodes : Array = []
 var links : Array = []
 
+# Save JSON file
+func save_to_file(path : String) -> void:
+	var chart = {
+		node_types = {},
+		nodes = [],
+		links = [],
+	}
+	
+	# Store node types
+	for node_type : CharterNodeTypeMenu in node_types:
+		chart.node_types[node_type.get_node_type_name()] = node_type.get_node_type_properties()
+	
+	# Store nodes
+	for node : CharterNode in nodes:
+		chart.nodes.append(node.get_node_info())
+	
+	# Store links
+	for link : CharterLink in links:
+		chart.links.append(link.get_link_info())
+	
+	# Create JSON
+	var chart_json = JSON.stringify(chart)
+	
+	# Finally, save JSON to file
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	file.store_line(chart_json)
+	file.close()
+	
+# Load JSON file
+func load_from_file(path : String) -> void:
+	pass
+
 # Node types
 func add_node_type(node_type : CharterNodeTypeMenu) -> void:
 	node_types.append(node_type)

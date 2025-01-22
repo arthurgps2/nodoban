@@ -15,6 +15,27 @@ func _process(_delta: float) -> void:
 	modulate = (color_valid_type if ChartInfo.get_node_type_by_name(type) 
 		else color_invalid_type)
 
+func get_node_info() -> Dictionary:
+	var info = {
+		type = self.type,
+		__posx = position.x,
+		__posy = position.y,
+	}
+	var overwrites = get_node_overwrites()
+	for overwrite_key in overwrites:
+		info[overwrite_key] = overwrites[overwrite_key]
+	
+	return info
+
+func get_node_overwrites() -> Dictionary:
+	var overwrites = {}
+	for child in $NameAndOverwriteContainer.get_children():
+		if child is not CharterProperty: continue
+		var property : CharterProperty = child
+		overwrites[property.get_property_name()] = property.get_property_value()
+	
+	return overwrites
+
 func get_center() -> Vector2:
 	return position + size/2
 
